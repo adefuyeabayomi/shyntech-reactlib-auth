@@ -105,7 +105,7 @@ var AuthPage = /*#__PURE__*/function (_Component) {
         phone: _this.state.phone,
         password: _this.state.password
       };
-      _this.props.sendLogin(data).then(function (res) {
+      _this.props.sendLogin(data, _this.props.baseURL, _this.props.loginEndpoint).then(function (res) {
         alert(res.data);
         console.log("response", res);
       })["catch"](function (err) {
@@ -114,7 +114,7 @@ var AuthPage = /*#__PURE__*/function (_Component) {
       console.log('submitting form', data);
     };
     _this.state = {
-      authOpen: false,
+      authOpen: _this.props.authOpen ? _this.props.authOpen : false,
       email: '',
       phone: '',
       password: '',
@@ -245,7 +245,7 @@ var AuthPage = /*#__PURE__*/function (_Component) {
   return AuthPage;
 }(React.Component);
 
-var sendLogin = function sendLogin(data, baseURL, login) {
+var sendLogin = function sendLogin(data, base, Endpoint) {
   try {
     var _loginEndpoint = "" + baseURL + _loginEndpoint;
     return Promise.resolve(axios.post(_loginEndpoint, data));
@@ -253,12 +253,8 @@ var sendLogin = function sendLogin(data, baseURL, login) {
     return Promise.reject(e);
   }
 };
-function sendSignUp(data) {
-  var signupEndpoint = "http://localhost:3000/auth/signup";
-  return axios.post(signupEndpoint, data);
-}
+var baseURL = "http://localhost:3000";
 
 exports.default = AuthPage;
 exports.sendLogin = sendLogin;
-exports.sendSignUp = sendSignUp;
 //# sourceMappingURL=index.js.map

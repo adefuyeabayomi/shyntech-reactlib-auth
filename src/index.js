@@ -1,6 +1,6 @@
 import AuthPage from './authpage/AuthPage'
-import { sendLogin, sendSignUp } from './requests'
+import { sendLogin } from './requests'
 
 
-export { sendLogin, sendSignUp }
+export { sendLogin }
 export default AuthPage

@@ -87,7 +87,7 @@ class AuthPage extends Component {
         phone: this.state.phone,
         password: this.state.password
       };
-      this.props.sendLogin(data).then(res => {
+      this.props.sendLogin(data, this.props.baseURL, this.props.loginEndpoint).then(res => {
         alert(res.data);
         console.log("response", res);
       }).catch(err => {
@@ -96,7 +96,7 @@ class AuthPage extends Component {
       console.log('submitting form', data);
     };
     this.state = {
-      authOpen: false,
+      authOpen: this.props.authOpen ? this.props.authOpen : false,
       email: '',
       phone: '',
       password: '',
@@ -219,15 +219,13 @@ class AuthPage extends Component {
   }
 }
 
-async function sendLogin(data, baseURL, login) {
+let baseURL = "http://localhost:3000";
+let loginEndpoint = "/auth/login";
+async function sendLogin(data, base = baseURL, Endpoint = loginEndpoint) {
   let loginEndpoint = `${baseURL}${loginEndpoint}`;
   return axios.post(loginEndpoint, data);
 }
-function sendSignUp(data) {
-  let signupEndpoint = "http://localhost:3000/auth/signup";
-  return axios.post(signupEndpoint, data);
-}
 
 export default AuthPage;
-export { sendLogin, sendSignUp };
+export { sendLogin };
 //# sourceMappingURL=index.modern.js.map
