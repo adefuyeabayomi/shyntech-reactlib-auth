@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import styles from './AuthPage.css'
 import { BsEnvelopeAt, BsLock, BsTelephone, BsGlobe, BsGoogle } from 'react-icons/bs'
-import bgImage from "./REGISTRATION_LANDSCAPE_2.png"
+import bgImage from "REGISTRATION_LANDSCAPE_2.png"
+console.log("bgImg", bgImage)
 
 class AuthPage extends Component {
   constructor(props) {

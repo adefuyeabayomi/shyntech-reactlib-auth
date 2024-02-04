@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { BsGlobe, BsLock, BsGoogle, BsTelephone, BsEnvelopeAt } from 'react-icons/bs';
+import bgImage from './REGISTRATION_LANDSCAPE_2~QAjlMDQZ.png';
 import axios from 'axios';
 
 var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC"};
 
-var bgImage = "REGISTRATION_LANDSCAPE_2~QAjlMDQZ.png";
-
+console.log("bgImg", bgImage);
 class AuthPage extends Component {
   constructor(props) {
     var _this;

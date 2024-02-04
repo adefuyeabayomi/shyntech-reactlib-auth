@@ -6,7 +6,6 @@
 }
 
 .AuthContainer {
-  background-image: url(./REGISTRATION_LANDSCAPE_2.png);
   background-color: #5F130F;
   color: white;
   display: flex;
@@ -14,8 +13,11 @@
   align-items: center;
   width: 100%;
   position: absolute;
-  width: 100%;
   height: 100vh;
+  background-size:120%,120%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   z-index: 2;
 }
 
