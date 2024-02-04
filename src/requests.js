@@ -1,9 +1,8 @@
 import axios from "axios"
-let baseURL = "http://localhost:3000"
-let loginEndpoint = "/auth/login"
-async function sendLogin (data,base = baseURL,Endpoint = loginEndpoint){
-    let loginEndpoint = `${baseURL}${loginEndpoint}`
-    return axios.post(loginEndpoint,data)
+
+async function sendLogin (data,baseURL,endpoint){
+    let fullURL = `${baseURL}${endpoint}`
+    return axios.post(fullURL,data)
 }
 
 function sendSignUp (data){

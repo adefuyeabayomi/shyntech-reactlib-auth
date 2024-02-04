@@ -20,6 +20,8 @@ function _setPrototypeOf(o, p) {
 
 var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC"};
 
+var bgImage = "REGISTRATION_LANDSCAPE_2~QAjlMDQZ.png";
+
 var AuthPage = /*#__PURE__*/function (_Component) {
   _inheritsLoose(AuthPage, _Component);
   function AuthPage(props) {
@@ -92,26 +94,32 @@ var AuthPage = /*#__PURE__*/function (_Component) {
     };
     _this.submitGoogle = function () {};
     _this.submitManual = function () {
-      _this.validatePassword(_this.state.password);
-      _this.state.isEmail ? _this.validateEmail(_this.state.email) : _this.validatePhone(_this.state.phone);
-      var valid = (_this.state.isEmail ? _this.state.emailValid : _this.state.phoneValid) && _this.state.passwordValid;
-      if (!valid) {
-        return;
+      try {
+        console.log("my props", _this.state.myProps);
+        _this.validatePassword(_this.state.password);
+        _this.state.isEmail ? _this.validateEmail(_this.state.email) : _this.validatePhone(_this.state.phone);
+        var valid = (_this.state.isEmail ? _this.state.emailValid : _this.state.phoneValid) && _this.state.passwordValid;
+        if (!valid) {
+          return Promise.resolve();
+        }
+        var data = {
+          emailSignin: _this.state.isEmail,
+          email: _this.state.email,
+          username: _this.state.email,
+          phone: _this.state.phone,
+          password: _this.state.password
+        };
+        _this.props.sendLogin(data, _this.state.myProps.baseURL, _this.state.myProps.loginEndpoint).then(function (res) {
+          alert(JSON.stringify(res.data));
+          console.log("response", res);
+        })["catch"](function (err) {
+          alert(err);
+        });
+        console.log('submitting form', data);
+        return Promise.resolve();
+      } catch (e) {
+        return Promise.reject(e);
       }
-      var data = {
-        emailSignin: _this.state.isEmail,
-        email: _this.state.email,
-        username: _this.state.email,
-        phone: _this.state.phone,
-        password: _this.state.password
-      };
-      _this.props.sendLogin(data, _this.props.baseURL, _this.props.loginEndpoint).then(function (res) {
-        alert(res.data);
-        console.log("response", res);
-      })["catch"](function (err) {
-        alert(err);
-      });
-      console.log('submitting form', data);
     };
     _this.state = {
       authOpen: _this.props.authOpen ? _this.props.authOpen : false,
@@ -122,9 +130,10 @@ var AuthPage = /*#__PURE__*/function (_Component) {
       phoneValid: true,
       passwordValid: true,
       validateMsg: '',
-      isEmail: true
+      isEmail: true,
+      myProps: props
     };
-    console.log(_this.props);
+    console.log(_this.state.myProps);
     return _this;
   }
   var _proto = AuthPage.prototype;
@@ -177,8 +186,12 @@ var AuthPage = /*#__PURE__*/function (_Component) {
       value: this.state.email,
       placeholder: "Input a vaild Email Address"
     }));
+    var authContainerStyle = {
+      backgroundImage: "url(" + bgImage + ")"
+    };
     var auth_main = /*#__PURE__*/React__default.createElement("div", {
-      className: styles.AuthContainer
+      className: styles.AuthContainer,
+      style: authContainerStyle
     }, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("div", {
       className: styles.closeButtonContainer
     }, /*#__PURE__*/React__default.createElement("button", {
@@ -245,15 +258,14 @@ var AuthPage = /*#__PURE__*/function (_Component) {
   return AuthPage;
 }(React.Component);
 
-var sendLogin = function sendLogin(data, base, Endpoint) {
+var sendLogin = function sendLogin(data, baseURL, endpoint) {
   try {
-    var _loginEndpoint = "" + baseURL + _loginEndpoint;
-    return Promise.resolve(axios.post(_loginEndpoint, data));
+    var fullURL = "" + baseURL + endpoint;
+    return Promise.resolve(axios.post(fullURL, data));
   } catch (e) {
     return Promise.reject(e);
   }
 };
-var baseURL = "http://localhost:3000";
 
 exports.default = AuthPage;
 exports.sendLogin = sendLogin;

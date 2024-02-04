@@ -4,9 +4,13 @@ import axios from 'axios';
 
 var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC"};
 
+var bgImage = "REGISTRATION_LANDSCAPE_2~QAjlMDQZ.png";
+
 class AuthPage extends Component {
   constructor(props) {
+    var _this;
     super(props);
+    _this = this;
     this.validateEmail = email => {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       let valid = emailRegex.test(email);
@@ -73,22 +77,23 @@ class AuthPage extends Component {
       });
     };
     this.submitGoogle = () => {};
-    this.submitManual = () => {
-      this.validatePassword(this.state.password);
-      this.state.isEmail ? this.validateEmail(this.state.email) : this.validatePhone(this.state.phone);
-      let valid = (this.state.isEmail ? this.state.emailValid : this.state.phoneValid) && this.state.passwordValid;
+    this.submitManual = async function () {
+      console.log("my props", _this.state.myProps);
+      _this.validatePassword(_this.state.password);
+      _this.state.isEmail ? _this.validateEmail(_this.state.email) : _this.validatePhone(_this.state.phone);
+      let valid = (_this.state.isEmail ? _this.state.emailValid : _this.state.phoneValid) && _this.state.passwordValid;
       if (!valid) {
         return;
       }
       let data = {
-        emailSignin: this.state.isEmail,
-        email: this.state.email,
-        username: this.state.email,
-        phone: this.state.phone,
-        password: this.state.password
+        emailSignin: _this.state.isEmail,
+        email: _this.state.email,
+        username: _this.state.email,
+        phone: _this.state.phone,
+        password: _this.state.password
       };
-      this.props.sendLogin(data, this.props.baseURL, this.props.loginEndpoint).then(res => {
-        alert(res.data);
+      _this.props.sendLogin(data, _this.state.myProps.baseURL, _this.state.myProps.loginEndpoint).then(res => {
+        alert(JSON.stringify(res.data));
         console.log("response", res);
       }).catch(err => {
         alert(err);
@@ -104,9 +109,10 @@ class AuthPage extends Component {
       phoneValid: true,
       passwordValid: true,
       validateMsg: '',
-      isEmail: true
+      isEmail: true,
+      myProps: props
     };
-    console.log(this.props);
+    console.log(this.state.myProps);
   }
   render() {
     let vaildationMessage = /*#__PURE__*/React.createElement("div", null, this.state.validateMsg);
@@ -156,8 +162,12 @@ class AuthPage extends Component {
       value: this.state.email,
       placeholder: "Input a vaild Email Address"
     }));
+    let authContainerStyle = {
+      backgroundImage: `url(${bgImage})`
+    };
     let auth_main = /*#__PURE__*/React.createElement("div", {
-      className: styles.AuthContainer
+      className: styles.AuthContainer,
+      style: authContainerStyle
     }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       className: styles.closeButtonContainer
     }, /*#__PURE__*/React.createElement("button", {
@@ -219,11 +229,9 @@ class AuthPage extends Component {
   }
 }
 
-let baseURL = "http://localhost:3000";
-let loginEndpoint = "/auth/login";
-async function sendLogin(data, base = baseURL, Endpoint = loginEndpoint) {
-  let loginEndpoint = `${baseURL}${loginEndpoint}`;
-  return axios.post(loginEndpoint, data);
+async function sendLogin(data, baseURL, endpoint) {
+  let fullURL = `${baseURL}${endpoint}`;
+  return axios.post(fullURL, data);
 }
 
 export default AuthPage;

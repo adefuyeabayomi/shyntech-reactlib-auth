@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import styles from './AuthPage.css'
 import { BsEnvelopeAt, BsLock, BsTelephone, BsGlobe, BsGoogle } from 'react-icons/bs'
+import bgImage from "./REGISTRATION_LANDSCAPE_2.png"
 
 class AuthPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      authOpen: this.props.authOpen? this.props.authOpen : false,
+      authOpen: this.props.authOpen ? this.props.authOpen : false,
       email: '',
       phone: '',
       password: '',
@@ -14,9 +15,10 @@ class AuthPage extends Component {
       phoneValid: true,
       passwordValid: true,
       validateMsg: '',
-      isEmail: true
+      isEmail: true,
+      myProps: props
     }
-    console.log(this.props)
+    console.log(this.state.myProps)
   }
 
   validateEmail = (email) => {
@@ -87,7 +89,8 @@ class AuthPage extends Component {
   submitGoogle = () => {
 
   }
-  submitManual = () => {
+  submitManual = async () => {
+    console.log("my props", this.state.myProps)
     this.validatePassword(this.state.password)
     this.state.isEmail ? this.validateEmail(this.state.email) : this.validatePhone(this.state.phone)
     let valid = (this.state.isEmail ? this.state.emailValid : this.state.phoneValid) && this.state.passwordValid
@@ -101,12 +104,13 @@ class AuthPage extends Component {
       phone: this.state.phone,
       password: this.state.password
     }
-    this.props.sendLogin(data,this.props.baseURL, this.props.loginEndpoint).then(res=>{
-      alert(res.data)
+    this.props.sendLogin(data,this.state.myProps.baseURL, this.state.myProps.loginEndpoint).then(res=>{
+      alert(JSON.stringify(res.data))
       console.log("response", res)
     }).catch(err=>{
       alert(err)
     })
+
     console.log('submitting form',data)
   }
 
@@ -151,9 +155,13 @@ class AuthPage extends Component {
         />
       </div>
     )
+    let authContainerStyle = {
+      backgroundImage: `url(${bgImage})`
+    }
+
 
     let auth_main = (
-      <div className={styles.AuthContainer}>
+      <div className={styles.AuthContainer} style={authContainerStyle}>
         <div>
           <div className={styles.closeButtonContainer}>
             <button
