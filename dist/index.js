@@ -4,6 +4,7 @@ var React = require('react');
 var React__default = _interopDefault(React);
 var bs = require('react-icons/bs');
 var bgImage = _interopDefault(require('./REGISTRATION_LANDSCAPE_2~QAjlMDQZ.png'));
+var googleLogo = _interopDefault(require('./google~VofglFVX.png'));
 var axios = _interopDefault(require('axios'));
 
 function _inheritsLoose(subClass, superClass) {
@@ -19,9 +20,8 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
-var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC"};
+var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC","offset15":"_AuthPage__offset15__1ptxK","googleIcon":"_AuthPage__googleIcon__1MDL-"};
 
-console.log("bgImg", bgImage);
 var AuthPage = /*#__PURE__*/function (_Component) {
   _inheritsLoose(AuthPage, _Component);
   function AuthPage(props) {
@@ -199,9 +199,13 @@ var AuthPage = /*#__PURE__*/function (_Component) {
         return _this2.updateAuthState(!_this2.state.authOpen);
       },
       className: styles.closeButton
-    }, "X"), /*#__PURE__*/React__default.createElement("span", null, /*#__PURE__*/React__default.createElement(bs.BsGlobe, null)), /*#__PURE__*/React__default.createElement("span", null, "English")), /*#__PURE__*/React__default.createElement("div", {
+    }, /*#__PURE__*/React__default.createElement(bs.BsArrowLeft, null)), /*#__PURE__*/React__default.createElement("span", null, "English"), /*#__PURE__*/React__default.createElement("span", null, /*#__PURE__*/React__default.createElement(bs.BsGlobe, null))), /*#__PURE__*/React__default.createElement("div", {
       className: styles.AuthContents
-    }, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("h1", null, "Sign In To Shyn Tech"), /*#__PURE__*/React__default.createElement("p", null, "You are just a step away from something amazing, Sign in with either your Phone number or your email address"), /*#__PURE__*/React__default.createElement("p", {
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles.offset15
+    }, /*#__PURE__*/React__default.createElement("h1", null, "Sign In To Shyn Tech"), /*#__PURE__*/React__default.createElement("p", {
+      className: styles.offset15
+    }, "You are just a step away from something amazing, Sign in with either your Phone number or your email address"), /*#__PURE__*/React__default.createElement("p", {
       className: styles.signUpOptions
     }, /*#__PURE__*/React__default.createElement("span", {
       className: this.state.isEmail ? styles.currentOption : "",
@@ -243,11 +247,23 @@ var AuthPage = /*#__PURE__*/function (_Component) {
       onClick: function onClick() {
         _this2.submitManual();
       }
-    }, "Sign In")), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("button", {
+    }, "Sign In")), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("p", {
+      className: styles.offset15
+    }, "Or Sign in with Google")), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("button", {
       onClick: function onClick() {
         _this2.submitGoogle();
       }
-    }, "Or Continue With Google", /*#__PURE__*/React__default.createElement("i", null, " ", /*#__PURE__*/React__default.createElement(bs.BsGoogle, null), " "))))));
+    }, " ", /*#__PURE__*/React__default.createElement("span", null, /*#__PURE__*/React__default.createElement("img", {
+      className: styles.googleIcon,
+      src: googleLogo
+    })), /*#__PURE__*/React__default.createElement("span", {
+      style: {
+        display: 'inline-block',
+        paddingLeft: 10,
+        position: 'relative',
+        bottom: 8
+      }
+    }, "Continue With Google"))))));
     return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("div", null, " ", this.state.authOpen ? auth_main : ''), /*#__PURE__*/React__default.createElement("button", {
       className: styles.AuthButton,
       onClick: function onClick() {

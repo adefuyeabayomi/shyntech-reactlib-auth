@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styles from './AuthPage.css'
-import { BsEnvelopeAt, BsLock, BsTelephone, BsGlobe, BsGoogle } from 'react-icons/bs'
+import { BsEnvelopeAt, BsLock, BsTelephone, BsGlobe,BsArrowLeft } from 'react-icons/bs'
 import bgImage from "REGISTRATION_LANDSCAPE_2.png"
-console.log("bgImg", bgImage)
+import googleLogo from "google.png"
 
 class AuthPage extends Component {
   constructor(props) {
@@ -169,17 +169,17 @@ class AuthPage extends Component {
               onClick={() => this.updateAuthState(!this.state.authOpen)}
               className={styles.closeButton}
             >
-              X
+              <BsArrowLeft></BsArrowLeft>
             </button>
+            <span>English</span>
             <span>
               <BsGlobe />
             </span>
-            <span>English</span>
           </div>
           <div className={styles.AuthContents}>
-            <div>
+            <div className={styles.offset15}>
               <h1>Sign In To Shyn Tech</h1>
-              <p>
+              <p className={styles.offset15}>
                 You are just a step away from something amazing, Sign in with
                 either your Phone number or your email address
               </p>
@@ -217,11 +217,14 @@ class AuthPage extends Component {
               </button>
             </div>
             <div>
+              <p className={styles.offset15}>Or Sign in with Google</p>
+            </div>
+            <div>
               <button
                 onClick={() => {
                   this.submitGoogle()
                 }}
-              >Or Continue With Google<i> <BsGoogle /> </i></button>
+              > <span><img className={styles.googleIcon} src={googleLogo} /></span><span style={{display: 'inline-block',paddingLeft: 10,position: 'relative',bottom: 8}}>Continue With Google</span></button>
             </div>
           </div>
         </div>

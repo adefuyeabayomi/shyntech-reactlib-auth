@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { BsGlobe, BsLock, BsGoogle, BsTelephone, BsEnvelopeAt } from 'react-icons/bs';
+import { BsArrowLeft, BsGlobe, BsLock, BsTelephone, BsEnvelopeAt } from 'react-icons/bs';
 import bgImage from './REGISTRATION_LANDSCAPE_2~QAjlMDQZ.png';
+import googleLogo from './google~VofglFVX.png';
 import axios from 'axios';
 
-var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC"};
+var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC","offset15":"_AuthPage__offset15__1ptxK","googleIcon":"_AuthPage__googleIcon__1MDL-"};
 
-console.log("bgImg", bgImage);
 class AuthPage extends Component {
   constructor(props) {
     var _this;
@@ -173,9 +173,13 @@ class AuthPage extends Component {
     }, /*#__PURE__*/React.createElement("button", {
       onClick: () => this.updateAuthState(!this.state.authOpen),
       className: styles.closeButton
-    }, "X"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(BsGlobe, null)), /*#__PURE__*/React.createElement("span", null, "English")), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement(BsArrowLeft, null)), /*#__PURE__*/React.createElement("span", null, "English"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(BsGlobe, null))), /*#__PURE__*/React.createElement("div", {
       className: styles.AuthContents
-    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Sign In To Shyn Tech"), /*#__PURE__*/React.createElement("p", null, "You are just a step away from something amazing, Sign in with either your Phone number or your email address"), /*#__PURE__*/React.createElement("p", {
+    }, /*#__PURE__*/React.createElement("div", {
+      className: styles.offset15
+    }, /*#__PURE__*/React.createElement("h1", null, "Sign In To Shyn Tech"), /*#__PURE__*/React.createElement("p", {
+      className: styles.offset15
+    }, "You are just a step away from something amazing, Sign in with either your Phone number or your email address"), /*#__PURE__*/React.createElement("p", {
       className: styles.signUpOptions
     }, /*#__PURE__*/React.createElement("span", {
       className: this.state.isEmail ? styles.currentOption : "",
@@ -217,11 +221,23 @@ class AuthPage extends Component {
       onClick: () => {
         this.submitManual();
       }
-    }, "Sign In")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
+    }, "Sign In")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
+      className: styles.offset15
+    }, "Or Sign in with Google")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
       onClick: () => {
         this.submitGoogle();
       }
-    }, "Or Continue With Google", /*#__PURE__*/React.createElement("i", null, " ", /*#__PURE__*/React.createElement(BsGoogle, null), " "))))));
+    }, " ", /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("img", {
+      className: styles.googleIcon,
+      src: googleLogo
+    })), /*#__PURE__*/React.createElement("span", {
+      style: {
+        display: 'inline-block',
+        paddingLeft: 10,
+        position: 'relative',
+        bottom: 8
+      }
+    }, "Continue With Google"))))));
     return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", null, " ", this.state.authOpen ? auth_main : ''), /*#__PURE__*/React.createElement("button", {
       className: styles.AuthButton,
       onClick: () => this.updateAuthState(!this.state.authOpen)
