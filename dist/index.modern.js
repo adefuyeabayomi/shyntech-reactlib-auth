@@ -4,7 +4,7 @@ import bgImage from './REGISTRATION_LANDSCAPE_2~QAjlMDQZ.png';
 import googleLogo from './google~VofglFVX.png';
 import axios from 'axios';
 
-var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC","offset15":"_AuthPage__offset15__1ptxK","googleIcon":"_AuthPage__googleIcon__1MDL-"};
+var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC","offset15":"_AuthPage__offset15__1ptxK","offset15_google":"_AuthPage__offset15_google__23vOX","googleIcon":"_AuthPage__googleIcon__1MDL-"};
 
 class AuthPage extends Component {
   constructor(props) {
@@ -222,7 +222,7 @@ class AuthPage extends Component {
         this.submitManual();
       }
     }, "Sign In")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
-      className: styles.offset15
+      className: styles.offset15_google
     }, "Or Sign in with Google")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
       onClick: () => {
         this.submitGoogle();

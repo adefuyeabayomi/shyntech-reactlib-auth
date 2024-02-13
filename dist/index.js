@@ -20,7 +20,7 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
-var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC","offset15":"_AuthPage__offset15__1ptxK","googleIcon":"_AuthPage__googleIcon__1MDL-"};
+var styles = {"AuthContainer":"_AuthPage__AuthContainer__1khLk","AuthButton":"_AuthPage__AuthButton__OgU3-","closeButton":"_AuthPage__closeButton__2bdd4","closeButtonContainer":"_AuthPage__closeButtonContainer__2xCiX","AuthContents":"_AuthPage__AuthContents__3YIKh","inputContainer":"_AuthPage__inputContainer__3mJWk","AuthButtons":"_AuthPage__AuthButtons__wIswV","vMessage":"_AuthPage__vMessage__DaI33","signUpOptions":"_AuthPage__signUpOptions__SLQi-","currentOption":"_AuthPage__currentOption__2gFjC","offset15":"_AuthPage__offset15__1ptxK","offset15_google":"_AuthPage__offset15_google__23vOX","googleIcon":"_AuthPage__googleIcon__1MDL-"};
 
 var AuthPage = /*#__PURE__*/function (_Component) {
   _inheritsLoose(AuthPage, _Component);
@@ -248,7 +248,7 @@ var AuthPage = /*#__PURE__*/function (_Component) {
         _this2.submitManual();
       }
     }, "Sign In")), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("p", {
-      className: styles.offset15
+      className: styles.offset15_google
     }, "Or Sign in with Google")), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("button", {
       onClick: function onClick() {
         _this2.submitGoogle();

@@ -217,7 +217,7 @@ class AuthPage extends Component {
               </button>
             </div>
             <div>
-              <p className={styles.offset15}>Or Sign in with Google</p>
+              <p className={styles.offset15_google}>Or Sign in with Google</p>
             </div>
             <div>
               <button
